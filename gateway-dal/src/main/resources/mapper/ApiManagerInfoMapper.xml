@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ss.gateway.dal.mapper.ApiManagerInfoMapper">
+    <resultMap id="BaseResultMap" type="com.ss.gateway.dal.model.AddApiInfoDO">
+        <id column="ID" jdbcType="DECIMAL" property="id"/>
+        <result column="URL" jdbcType="VARCHAR" property="url"/>
+        <result column="API_NAME" jdbcType="VARCHAR" property="apiName"/>
+        <result column="API_SERVICE" jdbcType="VARCHAR" property="apiService"/>
+        <result column="REQUEST_DTO" jdbcType="VARCHAR" property="requestDTO"/>
+        <result column="REQUEST_METHOD" jdbcType="VARCHAR" property="requestMethod"/>
+        <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy"/>
+        <result column="CREATE_AT" jdbcType="TIMESTAMP" property="createAt"/>
+        <result column="UPDATE_BY" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="UPDATE_AT" jdbcType="TIMESTAMP" property="updateAt"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,
+        URL,
+        API_NAME,
+        API_SERVICE,
+        REQUEST_DTO,
+        REQUEST_METHOD,
+        CREATE_BY,
+        CREATE_AT,
+        UPDATE_BY,
+        UPDATE_AT
+    </sql>
+
+    <insert id="addApiInfo" useGeneratedKeys="true" keyProperty="id" parameterType="com.ss.gateway.dal.model.AddApiInfoDO">
+      INSERT INTO t_api_info(
+          URL,
+          API_NAME,
+          API_SERVICE,
+          REQUEST_DTO,
+          REQUEST_METHOD,
+          CREATE_BY,
+          CREATE_AT,
+          UPDATE_BY,
+          UPDATE_AT
+        )
+        values (
+          #{url,jdbcType=VARCHAR},
+          #{apiName,jdbcType=VARCHAR},
+          #{apiService,jdbcType=VARCHAR},
+          #{requestDTO,jdbcType=VARCHAR},
+          #{requestMethod,jdbcType=VARCHAR},
+          #{createBy,jdbcType=VARCHAR},
+          now(),
+          #{updateBy,jdbcType=VARCHAR},
+          now()
+        )
+    </insert>
+
+</mapper>
