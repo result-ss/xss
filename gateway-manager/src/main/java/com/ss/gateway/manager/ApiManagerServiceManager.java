@@ -17,10 +17,21 @@ public class ApiManagerServiceManager {
 
     /**
      * 新增接口
+     *
      * @param addApiInfoDO
      * @return
      */
-    public boolean addApiInfo(AddApiInfoDO addApiInfoDO){
+    public boolean addApiInfo(AddApiInfoDO addApiInfoDO) {
         return apiManagerInfoMapper.addApiInfo(addApiInfoDO) > 1;
+    }
+
+    /**
+     * 接口详情查询
+     *
+     * @param addApiInfoDO
+     * @return
+     */
+    public AddApiInfoDO queryApiDetails(AddApiInfoDO addApiInfoDO) {
+        return apiManagerInfoMapper.selectOneApiInfo(addApiInfoDO);
     }
 }

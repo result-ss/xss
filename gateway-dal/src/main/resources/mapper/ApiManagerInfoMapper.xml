@@ -27,7 +27,9 @@
         UPDATE_AT
     </sql>
 
-    <insert id="addApiInfo" useGeneratedKeys="true" keyProperty="id" parameterType="com.ss.gateway.dal.model.AddApiInfoDO">
+    <!--  新增接口  -->
+    <insert id="addApiInfo" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.ss.gateway.dal.model.AddApiInfoDO">
       INSERT INTO t_api_info(
           URL,
           API_NAME,
@@ -52,4 +54,17 @@
         )
     </insert>
 
+    <!--  根据接口路径查询接口信息  -->
+    <select id="selectOneApiInfo" parameterType="com.ss.gateway.dal.model.AddApiInfoDO" resultMap="BaseResultMap">
+        select * from t_api_info
+        <where>
+            URL = #{url,jdbcType=VARCHAR}
+            <if test="apiName!='' and apiName!=null">
+                AND API_NAME = #{apiName,jdbcType=VARCHAR}
+            </if>
+            <if test="apiService!='' and apiService!=null">
+                AND API_SERVICE = #{apiService,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
 </mapper>

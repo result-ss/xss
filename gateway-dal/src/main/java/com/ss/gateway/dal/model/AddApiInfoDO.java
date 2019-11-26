@@ -15,6 +15,9 @@ import java.util.Date;
 @ToString
 public class AddApiInfoDO {
 
+    /**
+     * 主键ID
+     */
     private Long id;
 
     /**

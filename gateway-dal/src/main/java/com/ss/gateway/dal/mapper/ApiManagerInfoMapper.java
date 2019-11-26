@@ -12,8 +12,17 @@ public interface ApiManagerInfoMapper {
 
     /**
      * 新增接口
+     *
      * @param addApiInfoDO
      * @return
      */
     int addApiInfo(AddApiInfoDO addApiInfoDO);
+
+    /**
+     * 根据接口路径查询接口配置信息
+     *
+     * @param addApiInfoDO
+     * @return
+     */
+    AddApiInfoDO selectOneApiInfo(AddApiInfoDO addApiInfoDO);
 }

@@ -10,6 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>gateway-service-api</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.ss</groupId>
+            <artifactId>gateway-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 
 </project>

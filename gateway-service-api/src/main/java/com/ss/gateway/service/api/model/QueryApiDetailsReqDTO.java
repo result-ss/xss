@@ -3,6 +3,8 @@ package com.ss.gateway.service.api.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import net.sf.oval.constraint.NotBlank;
+import net.sf.oval.constraint.NotNull;
 
 import java.util.Date;
 
@@ -18,6 +20,8 @@ public class QueryApiDetailsReqDTO {
     /**
      * 接口路径
      */
+    @NotNull(message = "接口路径不能为空")
+    @NotBlank(message = "接口路径不能为空")
     private String url;
 
     /**
