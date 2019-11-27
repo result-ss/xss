@@ -1,4 +1,4 @@
-package com.ss.gateway.service.api.model;
+package com.ss.gateway.service.api.model.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,15 +10,15 @@ import java.util.Date;
 
 /**
  * @author xueshansheng
- * @date 2019/11/14 下午 4:31
+ * @date 2019/11/15 上午 10:21
  */
 @Setter
 @Getter
 @ToString
-public class AddApiReqDTO {
+public class QueryApiDetailsReqDTO {
 
     /**
-     * 路径
+     * 接口路径
      */
     @NotNull(message = "接口路径不能为空")
     @NotBlank(message = "接口路径不能为空")
@@ -27,29 +27,21 @@ public class AddApiReqDTO {
     /**
      * 接口名称
      */
-    @NotNull(message = "接口名称不能为空")
-    @NotBlank(message = "接口名称不能为空")
     private String apiName;
 
     /**
      * 接口服务
      */
-    @NotNull(message = "接口服务不能为空")
-    @NotBlank(message = "接口服务不能为空")
     private String apiService;
 
     /**
-     * 请求参数类型
+     * 请求参数
      */
-    @NotNull(message = "请求参数类型不能为空")
-    @NotBlank(message = "请求参数类型不能为空")
     private String requestDTO;
 
     /**
      * 请求方法
      */
-    @NotNull(message = "请求方法不能为空")
-    @NotBlank(message = "请求方法不能为空")
     private String requestMethod;
 
     /**
@@ -71,5 +63,4 @@ public class AddApiReqDTO {
      * 更新时间
      */
     private Date updateAt;
-
 }

@@ -67,4 +67,39 @@
             </if>
         </where>
     </select>
+
+    <!--  接口分页查询  -->
+    <select id="selectApiInfo" parameterType="com.ss.gateway.dal.model.AddApiInfoDO" resultMap="BaseResultMap">
+        select * from t_api_info
+        <where>
+            <if test="url!='' and url!=null">
+                URL = #{url,jdbcType=VARCHAR}
+            </if>
+            <if test="apiName!='' and apiName!=null">
+                AND API_NAME = #{apiName,jdbcType=VARCHAR}
+            </if>
+            <if test="apiService!='' and apiService!=null">
+                AND API_SERVICE = #{apiService,jdbcType=VARCHAR}
+            </if>
+        </where>
+        LIMIT #{startRow},#{pageCount}
+    </select>
+
+    <!--  接口分页查询总条数  -->
+    <select id="selectApiInfoCount" parameterType="com.ss.gateway.dal.model.AddApiInfoDO"
+            resultType="java.lang.Integer">
+        select count(1) from t_api_info
+        <where>
+            <if test="url!='' and url!=null">
+                URL = #{url,jdbcType=VARCHAR}
+            </if>
+            <if test="apiName!='' and apiName!=null">
+                AND API_NAME = #{apiName,jdbcType=VARCHAR}
+            </if>
+            <if test="apiService!='' and apiService!=null">
+                AND API_SERVICE = #{apiService,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
 </mapper>

@@ -1,27 +1,23 @@
-package com.ss.gateway.service.api.model;
+package com.ss.gateway.service.api.model.response;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import net.sf.oval.constraint.NotBlank;
-import net.sf.oval.constraint.NotNull;
 
 import java.util.Date;
 
 /**
  * @author xueshansheng
- * @date 2019/11/15 上午 10:21
+ * @date 2019/11/27 上午 9:50
  */
 @Setter
 @Getter
 @ToString
-public class QueryApiDetailsReqDTO {
+public class PageQueryApiInfoDTO {
 
     /**
      * 接口路径
      */
-    @NotNull(message = "接口路径不能为空")
-    @NotBlank(message = "接口路径不能为空")
     private String url;
 
     /**

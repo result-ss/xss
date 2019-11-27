@@ -8,9 +8,12 @@ import com.ss.gateway.dal.model.AddApiInfoDO;
 import com.ss.gateway.manager.ApiManagerServiceManager;
 import com.ss.gateway.manager.helper.ApiBaseConverter;
 import com.ss.gateway.service.api.ApiManagerService;
-import com.ss.gateway.service.api.model.AddApiReqDTO;
-import com.ss.gateway.service.api.model.QueryApiDetailsDTO;
-import com.ss.gateway.service.api.model.QueryApiDetailsReqDTO;
+import com.ss.gateway.service.api.model.request.AddApiReqDTO;
+import com.ss.gateway.service.api.model.request.PageQueryReqDTO;
+import com.ss.gateway.service.api.model.response.PageDTO;
+import com.ss.gateway.service.api.model.response.PageQueryApiInfoDTO;
+import com.ss.gateway.service.api.model.response.QueryApiDetailsDTO;
+import com.ss.gateway.service.api.model.request.QueryApiDetailsReqDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,6 +74,30 @@ public class ApiManagerServiceImpl implements ApiManagerService {
             log.info("查询接口详情响应参数,{}", JSONObject.toJSON(result));
         } catch (Exception e) {
             log.error("查询接口详情异常,{}", e);
+            result = ExceptionUtil.doExceptionService(e);
+        }
+        return result;
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param pageQueryReqDTO
+     * @return
+     */
+    @Override
+    public Result<PageDTO<PageQueryApiInfoDTO>> queryPageApi(PageQueryReqDTO pageQueryReqDTO) {
+        log.info("接口分页查询请求参数,{}", pageQueryReqDTO);
+        Result<PageDTO<PageQueryApiInfoDTO>> result = new Result<>();
+        try {
+            // 参数校验
+            VerifyUtil.validateObject(pageQueryReqDTO);
+            AddApiInfoDO addApiInfoDO = ApiBaseConverter.getPageQueryApiDOByDTO(pageQueryReqDTO);
+            PageDTO<PageQueryApiInfoDTO> pageQueryApiInfoDTOPageDTO = apiManagerServiceManager.queryPageApiDetails(addApiInfoDO);
+            result.setResult(pageQueryApiInfoDTOPageDTO);
+            log.info("接口分页查询响应参数,{}", JSONObject.toJSON(result));
+        } catch (Exception e) {
+            log.error("接口分页查询异常,{}", e);
             result = ExceptionUtil.doExceptionService(e);
         }
         return result;

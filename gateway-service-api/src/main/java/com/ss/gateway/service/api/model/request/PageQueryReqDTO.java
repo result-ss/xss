@@ -1,28 +1,25 @@
-package com.ss.gateway.dal.model;
+package com.ss.gateway.service.api.model.request;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.util.Date;
+import net.sf.oval.constraint.NotBlank;
+import net.sf.oval.constraint.NotNull;
 
 /**
  * @author xueshansheng
- * @date 2019/11/19 上午 10:59
+ * @date 2019/11/27 上午 10:00
  */
 @Setter
 @Getter
 @ToString
-public class AddApiInfoDO {
-
-    /**
-     * 主键ID
-     */
-    private Long id;
+public class PageQueryReqDTO {
 
     /**
      * 接口路径
      */
+//    @NotNull(message = "接口路径不能为空")
+//    @NotBlank(message = "接口路径不能为空")
     private String url;
 
     /**
@@ -51,42 +48,22 @@ public class AddApiInfoDO {
     private String createBy;
 
     /**
-     * 创建时间
-     */
-    private Date createAt;
-
-    /**
      * 更新人
      */
     private String updateBy;
 
     /**
-     * 更新时间
-     */
-    private Date updateAt;
-
-    /**
      * 当前页
      */
+    @NotNull(message = "当前页不能为空")
+    @NotBlank(message = "当前页不能为空")
     private Integer currentPage;
 
     /**
      * 每页条数
      */
+    @NotNull(message = "每页条数不能为空")
+    @NotBlank(message = "每页条数不能为空")
     private Integer pageCount;
 
-    /**
-     * 开始行
-     */
-    private Integer startRow;
-
-    /**
-     * 开始行
-     */
-    public Integer getStartRow() {
-        if (null == currentPage || null == pageCount) {
-            return 0;
-        }
-        return (currentPage - 1) * pageCount;
-    }
 }

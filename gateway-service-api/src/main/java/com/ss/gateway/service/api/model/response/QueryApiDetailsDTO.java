@@ -1,4 +1,4 @@
-package com.ss.gateway.service.api.model;
+package com.ss.gateway.service.api.model.response;
 
 import lombok.Getter;
 import lombok.Setter;

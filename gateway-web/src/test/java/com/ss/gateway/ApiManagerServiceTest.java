@@ -3,9 +3,12 @@ package com.ss.gateway;
 import com.alibaba.fastjson.JSONObject;
 import com.ss.gateway.common.utils.Result;
 import com.ss.gateway.service.api.ApiManagerService;
-import com.ss.gateway.service.api.model.AddApiReqDTO;
-import com.ss.gateway.service.api.model.QueryApiDetailsDTO;
-import com.ss.gateway.service.api.model.QueryApiDetailsReqDTO;
+import com.ss.gateway.service.api.model.request.AddApiReqDTO;
+import com.ss.gateway.service.api.model.request.PageQueryReqDTO;
+import com.ss.gateway.service.api.model.response.PageDTO;
+import com.ss.gateway.service.api.model.response.PageQueryApiInfoDTO;
+import com.ss.gateway.service.api.model.response.QueryApiDetailsDTO;
+import com.ss.gateway.service.api.model.request.QueryApiDetailsReqDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +51,12 @@ public class ApiManagerServiceTest extends BaseSpringTest {
         log.info("接口详情查询结果{}", JSONObject.toJSON(result));
     }
 
+    @Test
+    public void testPageQuery() {
+        PageQueryReqDTO pageQueryReqDTO = new PageQueryReqDTO();
+        pageQueryReqDTO.setCurrentPage(3);
+        pageQueryReqDTO.setPageCount(3);
+        Result<PageDTO<PageQueryApiInfoDTO>> result = apiManagerService.queryPageApi(pageQueryReqDTO);
+        log.info("接口分页查询结果{}", JSONObject.toJSON(result));
+    }
 }

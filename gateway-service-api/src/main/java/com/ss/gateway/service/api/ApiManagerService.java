@@ -1,9 +1,12 @@
 package com.ss.gateway.service.api;
 
 import com.ss.gateway.common.utils.Result;
-import com.ss.gateway.service.api.model.AddApiReqDTO;
-import com.ss.gateway.service.api.model.QueryApiDetailsDTO;
-import com.ss.gateway.service.api.model.QueryApiDetailsReqDTO;
+import com.ss.gateway.service.api.model.request.AddApiReqDTO;
+import com.ss.gateway.service.api.model.request.PageQueryReqDTO;
+import com.ss.gateway.service.api.model.response.PageDTO;
+import com.ss.gateway.service.api.model.response.PageQueryApiInfoDTO;
+import com.ss.gateway.service.api.model.response.QueryApiDetailsDTO;
+import com.ss.gateway.service.api.model.request.QueryApiDetailsReqDTO;
 
 /**
  * @author xueshansheng
@@ -26,4 +29,11 @@ public interface ApiManagerService {
      * @return
      */
     Result<QueryApiDetailsDTO> queryApiDetails(QueryApiDetailsReqDTO queryApiDetailsReqDTO);
+
+    /**
+     * 接口分页查询
+     * @param pageQueryReqDTO
+     * @return
+     */
+    Result<PageDTO<PageQueryApiInfoDTO>> queryPageApi(PageQueryReqDTO pageQueryReqDTO);
 }

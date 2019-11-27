@@ -1,9 +1,14 @@
 package com.ss.gateway.manager.helper;
 
 import com.ss.gateway.dal.model.AddApiInfoDO;
-import com.ss.gateway.service.api.model.AddApiReqDTO;
-import com.ss.gateway.service.api.model.QueryApiDetailsDTO;
-import com.ss.gateway.service.api.model.QueryApiDetailsReqDTO;
+import com.ss.gateway.service.api.model.request.AddApiReqDTO;
+import com.ss.gateway.service.api.model.request.PageQueryReqDTO;
+import com.ss.gateway.service.api.model.response.PageQueryApiInfoDTO;
+import com.ss.gateway.service.api.model.response.QueryApiDetailsDTO;
+import com.ss.gateway.service.api.model.request.QueryApiDetailsReqDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author xueshansheng
@@ -74,5 +79,54 @@ public class ApiBaseConverter {
         queryApiDetailsDTO.setUpdateBy(addApiInfoDO.getUpdateBy());
         queryApiDetailsDTO.setUpdateAt(addApiInfoDO.getUpdateAt());
         return queryApiDetailsDTO;
+    }
+
+    /**
+     * 获取查询接口详情DO
+     *
+     * @param pageQueryReqDTO
+     * @return
+     */
+    public static AddApiInfoDO getPageQueryApiDOByDTO(PageQueryReqDTO pageQueryReqDTO) {
+        if (pageQueryReqDTO == null) {
+            return null;
+        }
+        AddApiInfoDO ddApiInfoDO = new AddApiInfoDO();
+        ddApiInfoDO.setUrl(pageQueryReqDTO.getUrl());
+        ddApiInfoDO.setApiName(pageQueryReqDTO.getApiName());
+        ddApiInfoDO.setRequestDTO(pageQueryReqDTO.getRequestDTO());
+        ddApiInfoDO.setApiService(pageQueryReqDTO.getApiService());
+        ddApiInfoDO.setRequestMethod(pageQueryReqDTO.getRequestMethod());
+        ddApiInfoDO.setCurrentPage(pageQueryReqDTO.getCurrentPage());
+        ddApiInfoDO.setPageCount(pageQueryReqDTO.getPageCount());
+        ddApiInfoDO.setCreateBy(pageQueryReqDTO.getCreateBy());
+        ddApiInfoDO.setUpdateBy(pageQueryReqDTO.getUpdateBy());
+        return ddApiInfoDO;
+    }
+
+    /**
+     * 获取分页返回DTO
+     *
+     * @param addApiInfoDOS
+     * @return
+     */
+    public static List<PageQueryApiInfoDTO> getPageQueryRespDTO(List<AddApiInfoDO> addApiInfoDOS) {
+        if (addApiInfoDOS == null) {
+            return null;
+        }
+        List<PageQueryApiInfoDTO> list = new ArrayList<>();
+        for (AddApiInfoDO addApiInfoDO : addApiInfoDOS) {
+            PageQueryApiInfoDTO pageQueryApiInfoDTO = new PageQueryApiInfoDTO();
+            pageQueryApiInfoDTO.setUrl(addApiInfoDO.getUrl());
+            pageQueryApiInfoDTO.setApiName(addApiInfoDO.getApiName());
+            pageQueryApiInfoDTO.setApiService(addApiInfoDO.getApiService());
+            pageQueryApiInfoDTO.setRequestMethod(addApiInfoDO.getRequestMethod());
+            pageQueryApiInfoDTO.setCreateBy(addApiInfoDO.getCreateBy());
+            pageQueryApiInfoDTO.setCreateAt(addApiInfoDO.getCreateAt());
+            pageQueryApiInfoDTO.setUpdateBy(addApiInfoDO.getUpdateBy());
+            pageQueryApiInfoDTO.setUpdateAt(addApiInfoDO.getUpdateAt());
+            list.add(pageQueryApiInfoDTO);
+        }
+        return list;
     }
 }
