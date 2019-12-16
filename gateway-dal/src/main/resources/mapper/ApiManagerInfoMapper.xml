@@ -8,6 +8,7 @@
         <result column="API_SERVICE" jdbcType="VARCHAR" property="apiService"/>
         <result column="REQUEST_DTO" jdbcType="VARCHAR" property="requestDTO"/>
         <result column="REQUEST_METHOD" jdbcType="VARCHAR" property="requestMethod"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
         <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy"/>
         <result column="CREATE_AT" jdbcType="TIMESTAMP" property="createAt"/>
         <result column="UPDATE_BY" jdbcType="VARCHAR" property="updateBy"/>
@@ -21,6 +22,7 @@
         API_SERVICE,
         REQUEST_DTO,
         REQUEST_METHOD,
+        STATUS,
         CREATE_BY,
         CREATE_AT,
         UPDATE_BY,
@@ -36,6 +38,7 @@
           API_SERVICE,
           REQUEST_DTO,
           REQUEST_METHOD,
+          STATUS,
           CREATE_BY,
           CREATE_AT,
           UPDATE_BY,
@@ -47,6 +50,7 @@
           #{apiService,jdbcType=VARCHAR},
           #{requestDTO,jdbcType=VARCHAR},
           #{requestMethod,jdbcType=VARCHAR},
+          'ENABLE',
           #{createBy,jdbcType=VARCHAR},
           now(),
           #{updateBy,jdbcType=VARCHAR},

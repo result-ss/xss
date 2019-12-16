@@ -23,11 +23,14 @@ public class ApiManagerServiceTest extends BaseSpringTest {
     @Autowired
     private ApiManagerService apiManagerService;
 
+    /**
+     * 新增接口配置测试
+     */
     @Test
     public void testAddApiInfo() {
         AddApiReqDTO addApiReqDTO = new AddApiReqDTO();
-        addApiReqDTO.setUrl("/aa/aa/aa");
-//        addApiReqDTO.setApiName("流程测试");
+        addApiReqDTO.setUrl("/aa/aa/aac");
+        addApiReqDTO.setApiName("新的测试2");
         addApiReqDTO.setApiService("com.aa.aa.AaService");
         addApiReqDTO.setRequestDTO("com.aa.aa.req.AaDTO");
         addApiReqDTO.setRequestMethod("testA");
@@ -37,24 +40,30 @@ public class ApiManagerServiceTest extends BaseSpringTest {
         log.info("接口新增结果{}", JSONObject.toJSON(result));
     }
 
+    /**
+     * 接口详情查询测试
+     */
     @Test
     public void testQueryApiInfo() {
         QueryApiDetailsReqDTO queryApiDetailsReqDTO = new QueryApiDetailsReqDTO();
-        queryApiDetailsReqDTO.setUrl("/aa/aa/aaa");
-        queryApiDetailsReqDTO.setApiName("流程测试3");
-        queryApiDetailsReqDTO.setApiService("com.aa.aa.AaService");
-        queryApiDetailsReqDTO.setRequestDTO("com.aa.aa.req.AaDTO");
-        queryApiDetailsReqDTO.setRequestMethod("testA");
-        queryApiDetailsReqDTO.setCreateBy("ss");
-        queryApiDetailsReqDTO.setUpdateBy("ss");
+        queryApiDetailsReqDTO.setUrl("/aa/aa/aac");
+//        queryApiDetailsReqDTO.setApiName("流程测试3");
+//        queryApiDetailsReqDTO.setApiService("com.aa.aa.AaService");
+//        queryApiDetailsReqDTO.setRequestDTO("com.aa.aa.req.AaDTO");
+//        queryApiDetailsReqDTO.setRequestMethod("testA");
+//        queryApiDetailsReqDTO.setCreateBy("ss");
+//        queryApiDetailsReqDTO.setUpdateBy("ss");
         Result<QueryApiDetailsDTO> result = apiManagerService.queryApiDetails(queryApiDetailsReqDTO);
         log.info("接口详情查询结果{}", JSONObject.toJSON(result));
     }
 
+    /**
+     * 接口分页查询测试
+     */
     @Test
     public void testPageQuery() {
         PageQueryReqDTO pageQueryReqDTO = new PageQueryReqDTO();
-        pageQueryReqDTO.setCurrentPage(3);
+        pageQueryReqDTO.setCurrentPage(4);
         pageQueryReqDTO.setPageCount(3);
         Result<PageDTO<PageQueryApiInfoDTO>> result = apiManagerService.queryPageApi(pageQueryReqDTO);
         log.info("接口分页查询结果{}", JSONObject.toJSON(result));

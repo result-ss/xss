@@ -38,13 +38,12 @@ public class ApiManagerServiceImpl implements ApiManagerService {
     @Override
     public Result<Boolean> addApi(AddApiReqDTO addApiReqDTO) {
         log.info("新增接口配置请求参数,{}", addApiReqDTO);
-        Result<Boolean> result = new Result<>();
+        Result<Boolean> result;
         try {
             // 参数校验
             VerifyUtil.validateObject(addApiReqDTO);
             AddApiInfoDO addApiInfoDO = ApiBaseConverter.getAddApiDOByDTO(addApiReqDTO);
-            boolean b = apiManagerServiceManager.addApiInfo(addApiInfoDO);
-            result.setResult(b);
+            result =apiManagerServiceManager.addApiInfo(addApiInfoDO);
             log.info("新增接口配置响应参数,{}", JSONObject.toJSON(result));
         } catch (Exception e) {
             log.error("新增接口配置异常,{}", e);

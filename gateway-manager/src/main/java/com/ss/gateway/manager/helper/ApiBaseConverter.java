@@ -74,6 +74,7 @@ public class ApiBaseConverter {
         queryApiDetailsDTO.setRequestDTO(addApiInfoDO.getRequestDTO());
         queryApiDetailsDTO.setApiService(addApiInfoDO.getApiService());
         queryApiDetailsDTO.setRequestMethod(addApiInfoDO.getRequestMethod());
+        queryApiDetailsDTO.setStatus(addApiInfoDO.getStatus());
         queryApiDetailsDTO.setCreateBy(addApiInfoDO.getCreateBy());
         queryApiDetailsDTO.setCreateAt(addApiInfoDO.getCreateAt());
         queryApiDetailsDTO.setUpdateBy(addApiInfoDO.getUpdateBy());
@@ -121,6 +122,7 @@ public class ApiBaseConverter {
             pageQueryApiInfoDTO.setApiName(addApiInfoDO.getApiName());
             pageQueryApiInfoDTO.setApiService(addApiInfoDO.getApiService());
             pageQueryApiInfoDTO.setRequestMethod(addApiInfoDO.getRequestMethod());
+            pageQueryApiInfoDTO.setStatus(addApiInfoDO.getStatus());
             pageQueryApiInfoDTO.setCreateBy(addApiInfoDO.getCreateBy());
             pageQueryApiInfoDTO.setCreateAt(addApiInfoDO.getCreateAt());
             pageQueryApiInfoDTO.setUpdateBy(addApiInfoDO.getUpdateBy());

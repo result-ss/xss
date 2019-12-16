@@ -41,6 +41,11 @@ public class PageQueryApiInfoDTO {
     private String requestMethod;
 
     /**
+     * 接口状态
+     */
+    private String status;
+
+    /**
      * 创建人
      */
     private String createBy;

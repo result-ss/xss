@@ -24,7 +24,9 @@ public enum CommonErrorCode implements ErrorCode {
     /**
      * 参数校验不通过
      */
-    PARAMETER_VALID_NOT_PASS("PARAMETER_VALID_NOT_PASS", "参数校验不通过");
+    PARAMETER_VALID_NOT_PASS("PARAMETER_VALID_NOT_PASS", "参数校验不通过"),
+
+    API_URL_REPETITION("API_URL_REPETITION","接口路径不可重复");
 
     /**
      * 错误码
