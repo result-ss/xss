@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ss.gateway.common.utils.Result;
 import com.ss.gateway.service.api.UserService;
+import com.ss.gateway.service.api.model.request.LoginReqDTO;
 import com.ss.gateway.service.api.model.request.UseReqDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -25,8 +26,8 @@ public class UserInfoTest extends BaseSpringTest {
     @Test
     public void testAddUser() {
         UseReqDTO useReqDTO = new UseReqDTO();
-        useReqDTO.setReferralCode("16698039806");
-        useReqDTO.setUserName("c");
+        useReqDTO.setReferralCode("16698039803");
+        useReqDTO.setUserName("D");
         useReqDTO.setPassword("123456");
         useReqDTO.setLoginNo("16621122151");
         useReqDTO.setCreateBy("ss");
@@ -41,14 +42,12 @@ public class UserInfoTest extends BaseSpringTest {
      */
     @Test
     public void testLogin() {
-        UseReqDTO useReqDTO = new UseReqDTO();
-        useReqDTO.setUserName("sss");
-        useReqDTO.setPassword("123456");
-        useReqDTO.setLoginNo("16621122151");
-        useReqDTO.setCreateBy("ss");
-        useReqDTO.setUpdateBy("ss");
-        log.info("用户登录请求参数，{}", JSONObject.toJSON(useReqDTO));
-        Result<Boolean> result = userService.login(useReqDTO);
+        LoginReqDTO loginReqDTO = new LoginReqDTO();
+        loginReqDTO.setUserName("sss");
+        loginReqDTO.setPassword("123456");
+        loginReqDTO.setLoginNo("16621122151");
+        log.info("用户登录请求参数，{}", JSONObject.toJSON(loginReqDTO));
+        Result<Boolean> result = userService.login(loginReqDTO);
         log.info("用户登录响应参数,{}", JSON.toJSON(result));
     }
 }

@@ -10,6 +10,7 @@ import com.ss.gateway.manager.UserServiceManager;
 import com.ss.gateway.manager.helper.ApiBaseConverter;
 import com.ss.gateway.manager.helper.UserInfoConverter;
 import com.ss.gateway.service.api.UserService;
+import com.ss.gateway.service.api.model.request.LoginReqDTO;
 import com.ss.gateway.service.api.model.request.UseReqDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,13 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Result<Boolean> login(UseReqDTO useReqDTO) {
-        log.info("用户登录请求参数,{}", useReqDTO);
+    public Result<Boolean> login(LoginReqDTO loginReqDTO) {
+        log.info("用户登录请求参数,{}", loginReqDTO);
         Result<Boolean> result;
         try {
             // 参数校验
-            VerifyUtil.validateObject(useReqDTO);
-            UserDO userDO = UserInfoConverter.getUserDOByDTO(useReqDTO);
+            VerifyUtil.validateObject(loginReqDTO);
+            UserDO userDO = UserInfoConverter.getUserDOByLoginDTO(loginReqDTO);
             result = userServiceManager.login(userDO);
             log.info("用户登录响应参数,{}", JSONObject.toJSON(result));
         } catch (Exception e) {

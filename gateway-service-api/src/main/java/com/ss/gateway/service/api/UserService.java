@@ -1,6 +1,7 @@
 package com.ss.gateway.service.api;
 
 import com.ss.gateway.common.utils.Result;
+import com.ss.gateway.service.api.model.request.LoginReqDTO;
 import com.ss.gateway.service.api.model.request.UseReqDTO;
 
 /**
@@ -12,10 +13,10 @@ public interface UserService {
     /**
      * 登录
      *
-     * @param useReqDTO
+     * @param loginReqDTO
      * @return
      */
-    Result<Boolean> login(UseReqDTO useReqDTO);
+    Result<Boolean> login(LoginReqDTO loginReqDTO);
 
     /**
      * 用户注册
