@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ss.gateway.dal.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.ss.gateway.dal.model.UserDO">
+        <id column="ID" jdbcType="DECIMAL" property="id"/>
+        <result column="USER_NAME" jdbcType="VARCHAR" property="userName"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="LOGIN_NO" jdbcType="VARCHAR" property="loginNo"/>
+        <result column="USER_STATUS" jdbcType="VARCHAR" property="userStatus"/>
+        <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy"/>
+        <result column="CREATE_AT" jdbcType="TIMESTAMP" property="createAt"/>
+        <result column="UPDATE_BY" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="UPDATE_AT" jdbcType="TIMESTAMP" property="updateAt"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,
+        USER_NAME,
+        PASSWORD,
+        LOGIN_NO,
+        USER_STATUS,
+        CREATE_BY,
+        CREATE_AT,
+        UPDATE_BY,
+        UPDATE_AT
+    </sql>
+
+    <!--  用户注册  -->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.ss.gateway.dal.model.UserDO">
+      INSERT INTO t_user_info(
+          USER_NAME,
+          PASSWORD,
+          LOGIN_NO,
+          USER_STATUS,
+          CREATE_BY,
+          CREATE_AT,
+          UPDATE_BY,
+          UPDATE_AT
+        )
+        values (
+          #{userName,jdbcType=VARCHAR},
+          #{password,jdbcType=VARCHAR},
+          #{loginNo,jdbcType=VARCHAR},
+          'ENABLE',
+          #{createBy,jdbcType=VARCHAR},
+          now(),
+          #{updateBy,jdbcType=VARCHAR},
+          now()
+        )
+    </insert>
+
+    <!--   根据登录号查询用户信息   -->
+    <select id="queryUserByLoginNo" parameterType="com.ss.gateway.dal.model.UserDO" resultMap="BaseResultMap">
+        select * from
+        t_user_info
+        <where>
+            LOGIN_NO = #{loginNo,jdbcType=VARCHAR}
+            and
+            USER_STATUS = 'ENABLE'
+        </where>
+    </select>
+
+</mapper>
