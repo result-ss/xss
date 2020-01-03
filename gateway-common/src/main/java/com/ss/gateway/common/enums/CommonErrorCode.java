@@ -32,7 +32,7 @@ public enum CommonErrorCode implements ErrorCode {
     API_URL_REPETITION("API_URL_REPETITION","接口路径不可重复"),
 
     /**
-     * 用户不存在
+     * 用户已存在
      */
     USER_EXISTENT("USER_EXISTENT","用户已存在"),
 
@@ -44,7 +44,12 @@ public enum CommonErrorCode implements ErrorCode {
     /**
      * 密码错误
      */
-    PASSWORD_ERROR("PASSWORD_ERROR","密码错误");
+    PASSWORD_ERROR("PASSWORD_ERROR","密码错误"),
+
+    /**
+     * 接口不存在
+     */
+    API_NON_EXISTENT("API_NON_EXISTENT","接口不存在");
 
     /**
      * 错误码

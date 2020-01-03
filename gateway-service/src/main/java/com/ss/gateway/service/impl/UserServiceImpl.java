@@ -1,20 +1,19 @@
 package com.ss.gateway.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.ss.gateway.common.exception.ExceptionUtil;
 import com.ss.gateway.common.utils.Result;
 import com.ss.gateway.common.utils.VerifyUtil;
-import com.ss.gateway.dal.model.AddApiInfoDO;
 import com.ss.gateway.dal.model.UserDO;
 import com.ss.gateway.manager.UserServiceManager;
-import com.ss.gateway.manager.helper.ApiBaseConverter;
 import com.ss.gateway.manager.helper.UserInfoConverter;
 import com.ss.gateway.service.api.UserService;
 import com.ss.gateway.service.api.model.request.LoginReqDTO;
 import com.ss.gateway.service.api.model.request.UseReqDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * @author xueshansheng
@@ -22,6 +21,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
+@Component
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     /**
      * 登录
      *
-     * @param useReqDTO
+     * @param loginReqDTO
      * @return
      */
     @Override

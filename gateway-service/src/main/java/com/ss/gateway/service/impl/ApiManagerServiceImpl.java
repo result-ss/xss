@@ -1,5 +1,6 @@
 package com.ss.gateway.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.ss.gateway.common.exception.ExceptionUtil;
 import com.ss.gateway.common.utils.Result;
@@ -16,7 +17,7 @@ import com.ss.gateway.service.api.model.response.QueryApiDetailsDTO;
 import com.ss.gateway.service.api.model.request.QueryApiDetailsReqDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * @author xueshansheng
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
+@Component
 public class ApiManagerServiceImpl implements ApiManagerService {
 
     @Autowired

@@ -25,11 +25,18 @@ public class UseReqDTO implements Serializable {
     private static final long serialVersionUID = -3516740715495035129L;
 
     /**
+     * 日志号
+     */
+    @NotNull(message = "日志号不能为空")
+    @NotBlank(message = "日志号不能为空")
+    private String traceLogId;
+
+    /**
      * 推荐码
      */
     @NotBlank(message = "推荐码不能为空")
     @NotNull(message = "推荐码不能为空")
-    @MemberOf(value = { "16698039803"}, message = "推荐码错误")
+    @MemberOf(value = {"16698039803"}, message = "推荐码错误")
     private String referralCode;
 
     /**

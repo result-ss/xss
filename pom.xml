@@ -29,6 +29,12 @@
         <groovy.version>2.5.6</groovy.version>
         <google.guava.version>18.0</google.guava.version>
         <fastjson.version>1.2.59</fastjson.version>
+        <alibaba.common.version>2.6.5</alibaba.common.version>
+        <alibaba.dubbo-rpc-api.version>2.6.5</alibaba.dubbo-rpc-api.version>
+        <alibaba.dubbo-config-api.version>2.6.5</alibaba.dubbo-config-api.version>
+        <alibaba.dubbo.version>2.6.5</alibaba.dubbo.version>
+        <curator.version>4.0.1</curator.version>
+        <dubbo-spring-boot-starter.version>0.1.0</dubbo-spring-boot-starter.version>
     </properties>
 
     <dependencies>
@@ -36,6 +42,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.2.1.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>2.2.1.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -78,6 +96,54 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>dubbo-common</artifactId>-->
+            <!--<version>${alibaba.common.version}</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>dubbo-rpc-api</artifactId>-->
+            <!--<version>${alibaba.dubbo-rpc-api.version}</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>dubbo-config-api</artifactId>-->
+            <!--<version>${alibaba.dubbo-config-api.version}</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo-spring-boot-starter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.spring</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${alibaba.dubbo.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>${curator.version}</version>
         </dependency>
     </dependencies>
 

@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.UUID;
+
 /**
  * @author xueshansheng
  * @date 2019/12/30 下午 3:37
@@ -26,6 +28,7 @@ public class UserInfoTest extends BaseSpringTest {
     @Test
     public void testAddUser() {
         UseReqDTO useReqDTO = new UseReqDTO();
+        useReqDTO.setTraceLogId(UUID.randomUUID().toString());
         useReqDTO.setReferralCode("16698039803");
         useReqDTO.setUserName("D");
         useReqDTO.setPassword("123456");
@@ -43,9 +46,10 @@ public class UserInfoTest extends BaseSpringTest {
     @Test
     public void testLogin() {
         LoginReqDTO loginReqDTO = new LoginReqDTO();
+        loginReqDTO.setTraceLogId(UUID.randomUUID().toString());
         loginReqDTO.setUserName("sss");
         loginReqDTO.setPassword("123456");
-        loginReqDTO.setLoginNo("16621122151");
+        loginReqDTO.setLoginNo("166211221513");
         log.info("用户登录请求参数，{}", JSONObject.toJSON(loginReqDTO));
         Result<Boolean> result = userService.login(loginReqDTO);
         log.info("用户登录响应参数,{}", JSON.toJSON(result));

@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.UUID;
+
 /**
  * @author xueshansheng
  * @date 2019/11/19 上午 10:31
@@ -29,6 +31,7 @@ public class ApiManagerServiceTest extends BaseSpringTest {
     @Test
     public void testAddApiInfo() {
         AddApiReqDTO addApiReqDTO = new AddApiReqDTO();
+        addApiReqDTO.setTraceLogId(UUID.randomUUID().toString());
         addApiReqDTO.setUrl("/aa/aa/aac");
         addApiReqDTO.setApiName("新的测试2");
         addApiReqDTO.setApiService("com.aa.aa.AaService");
@@ -46,6 +49,7 @@ public class ApiManagerServiceTest extends BaseSpringTest {
     @Test
     public void testQueryApiInfo() {
         QueryApiDetailsReqDTO queryApiDetailsReqDTO = new QueryApiDetailsReqDTO();
+        queryApiDetailsReqDTO.setTraceLogId(UUID.randomUUID().toString());
         queryApiDetailsReqDTO.setUrl("/aa/aa/aac");
 //        queryApiDetailsReqDTO.setApiName("流程测试3");
 //        queryApiDetailsReqDTO.setApiService("com.aa.aa.AaService");
@@ -63,6 +67,7 @@ public class ApiManagerServiceTest extends BaseSpringTest {
     @Test
     public void testPageQuery() {
         PageQueryReqDTO pageQueryReqDTO = new PageQueryReqDTO();
+        pageQueryReqDTO.setTraceLogId(UUID.randomUUID().toString());
         pageQueryReqDTO.setCurrentPage(4);
         pageQueryReqDTO.setPageCount(3);
         Result<PageDTO<PageQueryApiInfoDTO>> result = apiManagerService.queryPageApi(pageQueryReqDTO);

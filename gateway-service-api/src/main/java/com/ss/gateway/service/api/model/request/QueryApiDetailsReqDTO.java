@@ -6,6 +6,7 @@ import lombok.ToString;
 import net.sf.oval.constraint.NotBlank;
 import net.sf.oval.constraint.NotNull;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,7 +16,19 @@ import java.util.Date;
 @Setter
 @Getter
 @ToString
-public class QueryApiDetailsReqDTO {
+public class QueryApiDetailsReqDTO implements Serializable {
+
+    /**
+     * 序列ID
+     */
+    private static final long serialVersionUID = 7528678294002170366L;
+
+    /**
+     * 日志号
+     */
+    @NotNull(message = "日志号不能为空")
+    @NotBlank(message = "日志号不能为空")
+    private String traceLogId;
 
     /**
      * 接口路径

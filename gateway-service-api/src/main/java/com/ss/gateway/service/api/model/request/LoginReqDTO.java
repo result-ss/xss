@@ -23,6 +23,13 @@ public class LoginReqDTO implements Serializable {
     private static final long serialVersionUID = 5593148184388518352L;
 
     /**
+     * 日志号
+     */
+    @NotNull(message = "日志号不能为空")
+    @NotBlank(message = "日志号不能为空")
+    private String traceLogId;
+
+    /**
      * 用户名
      */
     @NotBlank(message = "用户名不能为空")

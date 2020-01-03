@@ -6,6 +6,8 @@ import lombok.ToString;
 import net.sf.oval.constraint.NotBlank;
 import net.sf.oval.constraint.NotNull;
 
+import java.io.Serializable;
+
 /**
  * @author xueshansheng
  * @date 2019/11/27 上午 10:00
@@ -13,7 +15,19 @@ import net.sf.oval.constraint.NotNull;
 @Setter
 @Getter
 @ToString
-public class PageQueryReqDTO {
+public class PageQueryReqDTO implements Serializable {
+
+    /**
+     * 序列ID
+     */
+    private static final long serialVersionUID = -8498129009628397716L;
+
+    /**
+     * 日志号
+     */
+    @NotNull(message = "日志号不能为空")
+    @NotBlank(message = "日志号不能为空")
+    private String traceLogId;
 
     /**
      * 接口路径
