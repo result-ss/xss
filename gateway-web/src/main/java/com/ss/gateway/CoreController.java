@@ -23,12 +23,35 @@ public class CoreController extends HttpServlet {
     @Autowired
     private CoreBusinessServiceImpl coreBusinessService;
 
+    /**
+     * post请求
+     * @param request
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("收到请求，开始处理{}",request);
+        log.info("收到请求/post，开始处理{}",request);
         Result<String> result = coreBusinessService.doBusiness(request);
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().append(result.getResult());
-        log.info("处理结果，{}",result);
+        log.info("处理结果/post，{}",result);
+    }
+
+    /**
+     * get请求
+     * @param request
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("收到请求/get，开始处理{}",request);
+        Result<String> result = coreBusinessService.doBusiness(request);
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().append(result.getResult());
+        log.info("处理结果/get，{}",result);
     }
 }

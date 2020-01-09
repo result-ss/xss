@@ -17,9 +17,6 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,7 +36,6 @@ public class CoreBusinessManager {
      * @param request
      */
     public Result<String> doRequestConverter(HttpServletRequest request) throws IOException {
-
         // 获取请求路径
         String uri = request.getRequestURI();
         // 根据路径查询接口信息
@@ -72,12 +68,12 @@ public class CoreBusinessManager {
         ReferenceConfig<GenericService> reference = new ReferenceConfig<GenericService>();
         // 当前dubbo consumer的application配置，不设置会直接抛异常
         ApplicationConfig applicationConfig = new ApplicationConfig();
-        applicationConfig.setName("ss_test_service");
+        applicationConfig.setName("ss_gateway_service");
         // 注册中心配置
         RegistryConfig registryConfig = new RegistryConfig();
         // 注册中心这里需要配置上注册中心协议，例如下面的zookeeper
-        registryConfig.setAddress("zookeeper://49.234.116.249:2181");
-//        registryConfig.setAddress("zookeeper://172.17.45.14:2181");
+        registryConfig.setAddress("zookeeper://121.36.44.41:2181");
+//        registryConfig.setAddress("zookeeper://49.234.116.249:2181");
 //        registryConfig.setGroup("test_group");
         reference.setApplication(applicationConfig);
         reference.setRegistry(registryConfig);
