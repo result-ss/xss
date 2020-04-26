@@ -1,13 +1,20 @@
 package com.ss.gateway.manager.helper;
 
+import com.google.common.base.Throwables;
+import com.ss.gateway.common.constants.DateConstant;
+import com.ss.gateway.common.enums.CommonErrorCode;
+import com.ss.gateway.common.utils.DateUtils;
+import com.ss.gateway.common.utils.Result;
 import com.ss.gateway.dal.model.AddApiInfoDO;
 import com.ss.gateway.service.api.model.request.AddApiReqDTO;
 import com.ss.gateway.service.api.model.request.PageQueryReqDTO;
 import com.ss.gateway.service.api.model.response.PageQueryApiInfoDTO;
 import com.ss.gateway.service.api.model.response.QueryApiDetailsDTO;
 import com.ss.gateway.service.api.model.request.QueryApiDetailsReqDTO;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -115,6 +122,7 @@ public class ApiBaseConverter {
         if (addApiInfoDOS == null) {
             return null;
         }
+        reverse(addApiInfoDOS);
         List<PageQueryApiInfoDTO> list = new ArrayList<>();
         for (AddApiInfoDO addApiInfoDO : addApiInfoDOS) {
             PageQueryApiInfoDTO pageQueryApiInfoDTO = new PageQueryApiInfoDTO();
@@ -124,11 +132,33 @@ public class ApiBaseConverter {
             pageQueryApiInfoDTO.setRequestMethod(addApiInfoDO.getRequestMethod());
             pageQueryApiInfoDTO.setStatus(addApiInfoDO.getStatus());
             pageQueryApiInfoDTO.setCreateBy(addApiInfoDO.getCreateBy());
-            pageQueryApiInfoDTO.setCreateAt(addApiInfoDO.getCreateAt());
+            pageQueryApiInfoDTO.setCreateAt(DateUtils.getDateStr(addApiInfoDO.getCreateAt(), DateConstant.DATE_PATTERN));
             pageQueryApiInfoDTO.setUpdateBy(addApiInfoDO.getUpdateBy());
-            pageQueryApiInfoDTO.setUpdateAt(addApiInfoDO.getUpdateAt());
+            pageQueryApiInfoDTO.setUpdateAt(DateUtils.getDateStr(addApiInfoDO.getUpdateAt(), DateConstant.DATE_PATTERN));
             list.add(pageQueryApiInfoDTO);
         }
         return list;
+    }
+
+    /**
+     * 排序---正序
+     *
+     * @param list
+     */
+    private static void reverse(List<AddApiInfoDO> list) {
+        if (list == null) {
+            list = new ArrayList<>();
+            return;
+        }
+        list.sort((o1, o2) -> {
+            Date d1 = DateUtils.formatToDate(o1.getCreateAt(), DateConstant.DATE_PATTERN);
+            Date d2 = DateUtils.formatToDate(o2.getCreateAt(), DateConstant.DATE_PATTERN);
+            try {
+                return d1.compareTo(d2);
+            } catch (Exception e) {
+                new Result<>(CommonErrorCode.SORT_ERROR.getDesc(), CommonErrorCode.SORT_ERROR.getCode());
+            }
+            return 0;
+        });
     }
 }

@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
-
 /**
  * @author xueshansheng
  * @date 2019/11/27 上午 9:50
@@ -53,7 +51,7 @@ public class PageQueryApiInfoDTO {
     /**
      * 创建时间
      */
-    private Date createAt;
+    private String createAt;
 
     /**
      * 更新人
@@ -63,5 +61,5 @@ public class PageQueryApiInfoDTO {
     /**
      * 更新时间
      */
-    private Date updateAt;
+    private String updateAt;
 }

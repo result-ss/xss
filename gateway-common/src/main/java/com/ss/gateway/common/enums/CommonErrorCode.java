@@ -29,27 +29,32 @@ public enum CommonErrorCode implements ErrorCode {
     /**
      * 接口路径不可重复
      */
-    API_URL_REPETITION("API_URL_REPETITION","接口路径不可重复"),
+    API_URL_REPETITION("API_URL_REPETITION", "接口路径不可重复"),
 
     /**
      * 用户已存在
      */
-    USER_EXISTENT("USER_EXISTENT","用户已存在"),
+    USER_EXISTENT("USER_EXISTENT", "用户已存在"),
 
     /**
      * 用户不存在
      */
-    USER_NON_EXISTENT("USER_NON_EXISTENT","用户不存在"),
+    USER_NON_EXISTENT("USER_NON_EXISTENT", "用户不存在"),
 
     /**
      * 密码错误
      */
-    PASSWORD_ERROR("PASSWORD_ERROR","密码错误"),
+    PASSWORD_ERROR("PASSWORD_ERROR", "密码错误"),
 
     /**
      * 接口不存在
      */
-    API_NON_EXISTENT("API_NON_EXISTENT","接口不存在");
+    API_NON_EXISTENT("API_NON_EXISTENT", "接口不存在"),
+
+    /**
+     * 接口不存在
+     */
+    SORT_ERROR("SORT_ERROR", "排序出错");
 
     /**
      * 错误码
