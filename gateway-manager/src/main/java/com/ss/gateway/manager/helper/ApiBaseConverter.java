@@ -130,6 +130,7 @@ public class ApiBaseConverter {
             pageQueryApiInfoDTO.setApiName(addApiInfoDO.getApiName());
             pageQueryApiInfoDTO.setApiService(addApiInfoDO.getApiService());
             pageQueryApiInfoDTO.setRequestMethod(addApiInfoDO.getRequestMethod());
+            pageQueryApiInfoDTO.setRequestDTO(addApiInfoDO.getRequestDTO());
             pageQueryApiInfoDTO.setStatus(addApiInfoDO.getStatus());
             pageQueryApiInfoDTO.setCreateBy(addApiInfoDO.getCreateBy());
             pageQueryApiInfoDTO.setCreateAt(DateUtils.getDateStr(addApiInfoDO.getCreateAt(), DateConstant.DATE_PATTERN));
