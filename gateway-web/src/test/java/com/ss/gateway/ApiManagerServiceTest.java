@@ -68,7 +68,7 @@ public class ApiManagerServiceTest extends BaseSpringTest {
     public void testPageQuery() {
         PageQueryReqDTO pageQueryReqDTO = new PageQueryReqDTO();
         pageQueryReqDTO.setTraceLogId(UUID.randomUUID().toString());
-        pageQueryReqDTO.setCurrentPage(4);
+        pageQueryReqDTO.setCurrentPage(1);
         pageQueryReqDTO.setPageCount(3);
         Result<PageDTO<PageQueryApiInfoDTO>> result = apiManagerService.queryPageApi(pageQueryReqDTO);
         log.info("接口分页查询结果{}", JSONObject.toJSON(result));
