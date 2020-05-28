@@ -7,6 +7,7 @@ import com.ss.gateway.service.api.CoreBusinessService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -30,11 +31,16 @@ public class CoreBusinessServiceImpl implements CoreBusinessService {
      */
     @Override
     public Result<String> doBusiness(HttpServletRequest request) {
+        StopWatch sw = new StopWatch();
         log.info("开始请求的转换，需要处理的请求是，{}", request);
+        sw.start();
         Result<String> result = null;
         try {
             result = coreBusinessManager.doRequestConverter(request);
+            sw.stop();
+            log.info("响应成功[{}],耗时[{}]ms,", result, sw.getTotalTimeMillis());
         } catch (IOException e) {
+            log.info("响应失败,异常信息：[{}],耗时[{}]ms,", e, sw.getTotalTimeMillis());
             e.printStackTrace();
         }
         return result;
