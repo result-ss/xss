@@ -2,7 +2,6 @@ package com.ss.gateway.manager;
 
 import com.ss.gateway.common.enums.CommonErrorCode;
 import com.ss.gateway.common.exception.BusinessException;
-import com.ss.gateway.common.utils.Result;
 import com.ss.gateway.dal.mapper.ApiManagerInfoMapper;
 import com.ss.gateway.dal.model.AddApiInfoDO;
 import com.ss.gateway.manager.helper.ApiBaseConverter;
@@ -32,7 +31,7 @@ public class ApiManagerServiceManager {
     public Boolean addApiInfo(AddApiInfoDO addApiInfoDO) {
         AddApiInfoDO addApiInfo = queryApiDetails(addApiInfoDO);
         if (addApiInfo != null) {
-            throw  new BusinessException(CommonErrorCode.API_URL_REPETITION.getDesc(), CommonErrorCode.API_URL_REPETITION.getCode());
+            throw new BusinessException(CommonErrorCode.API_URL_REPETITION.getDesc(), CommonErrorCode.API_URL_REPETITION.getCode());
         }
         return apiManagerInfoMapper.addApiInfo(addApiInfoDO) > 0;
     }
@@ -64,4 +63,5 @@ public class ApiManagerServiceManager {
         page.setPageSize(addApiInfoDO.getPageCount());
         return page;
     }
+
 }

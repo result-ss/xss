@@ -8,7 +8,6 @@ import net.sf.oval.constraint.NotBlank;
 import net.sf.oval.constraint.NotNull;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author xueshansheng

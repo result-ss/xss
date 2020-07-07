@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
  * @author xueshansheng
  * @date 2019/12/30 下午 3:06
  */
+
 @Service
 @Slf4j
 @Component
@@ -72,4 +73,5 @@ public class UserServiceImpl implements UserService {
         }
         return result;
     }
+
 }

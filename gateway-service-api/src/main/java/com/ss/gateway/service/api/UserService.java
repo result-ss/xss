@@ -25,4 +25,5 @@ public interface UserService {
      * @return
      */
     Result<Boolean> addUser(UseReqDTO useReqDTO);
+
 }

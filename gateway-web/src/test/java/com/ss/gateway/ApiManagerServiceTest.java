@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 /**
@@ -50,7 +51,7 @@ public class ApiManagerServiceTest extends BaseSpringTest {
     public void testQueryApiInfo() {
         QueryApiDetailsReqDTO queryApiDetailsReqDTO = new QueryApiDetailsReqDTO();
         queryApiDetailsReqDTO.setTraceLogId(UUID.randomUUID().toString());
-        queryApiDetailsReqDTO.setUrl("/aa/aa/aac");
+        queryApiDetailsReqDTO.setUrl("/aa/aa/aac0");
 //        queryApiDetailsReqDTO.setApiName("流程测试3");
 //        queryApiDetailsReqDTO.setApiService("com.aa.aa.AaService");
 //        queryApiDetailsReqDTO.setRequestDTO("com.aa.aa.req.AaDTO");
@@ -73,4 +74,27 @@ public class ApiManagerServiceTest extends BaseSpringTest {
         Result<PageDTO<PageQueryApiInfoDTO>> result = apiManagerService.queryPageApi(pageQueryReqDTO);
         log.info("接口分页查询结果{}", JSONObject.toJSON(result));
     }
+
+
+    @Test
+    public void test() {
+        int a = 20;
+        int b = 33;
+    }
+
+    @Test
+    public void getTableTag() {
+        String entityType = "BANKCARD";
+        String entityNo = "128";
+        int i = entityNo.hashCode();
+        if (entityType.equals("BANKCARD")) {
+            String format = new DecimalFormat("00").format(Math.abs((long) i) % 64);
+            log.info("result------>{}", format);
+        } else {
+            String format = new DecimalFormat("00").format(Long.parseLong(entityNo) % 64);
+            log.info("result------>{}", format);
+        }
+    }
+
+
 }

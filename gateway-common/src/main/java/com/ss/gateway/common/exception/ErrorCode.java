@@ -1,6 +1,5 @@
 package com.ss.gateway.common.exception;
 
-
 import java.io.Serializable;
 
 /**

@@ -59,4 +59,5 @@ public class UserDO {
      * 更新时间
      */
     private Date updateAt;
+
 }

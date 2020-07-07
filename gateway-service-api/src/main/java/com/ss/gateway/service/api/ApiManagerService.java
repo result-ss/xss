@@ -32,8 +32,10 @@ public interface ApiManagerService {
 
     /**
      * 接口分页查询
+     *
      * @param pageQueryReqDTO
      * @return
      */
     Result<PageDTO<PageQueryApiInfoDTO>> queryPageApi(PageQueryReqDTO pageQueryReqDTO);
+
 }

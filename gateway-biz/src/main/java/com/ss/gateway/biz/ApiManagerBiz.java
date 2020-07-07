@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
  * @author xueshansheng
  * @date 2020/5/25 下午 7:16
  */
+
 @Component
 public class ApiManagerBiz {
 
@@ -24,4 +25,5 @@ public class ApiManagerBiz {
     public Boolean addApiInfo(ApiInfoBO apiInfoBO) {
         return apiManagerCore.addApiInfo(apiInfoBO);
     }
+
 }

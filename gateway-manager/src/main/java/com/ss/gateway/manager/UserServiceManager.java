@@ -47,4 +47,5 @@ public class UserServiceManager {
         }
         return new Result<>(userMapper.addUser(userDO) > 0);
     }
+    
 }

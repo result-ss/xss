@@ -54,4 +54,5 @@ public class CoreController extends HttpServlet {
         resp.getWriter().append(result.getResult());
         log.info("处理结果/get，{}",result);
     }
+
 }

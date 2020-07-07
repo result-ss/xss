@@ -16,4 +16,5 @@ public interface CoreBusinessService {
      * @param req
      */
     Result<String> doBusiness(HttpServletRequest req);
+
 }
